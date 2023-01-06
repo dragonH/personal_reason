@@ -11,5 +11,16 @@ app = PersonalReason(
     _server_endpoint=secrets['server_endpoint']
 )
 
-app.login(_company_id=secrets['company_id'], _user_id=secrets['user_id'], _password=secrets['password'])
-print(app.session_id)
+app \
+    .login(
+        _company_id=secrets['company_id'],
+        _user_id=secrets['user_id'],
+        _password=secrets['password']
+    ) \
+    .clock_in(
+        _base_latitude=secrets['base_latitude'],
+        _base_longitude=secrets['base_longitude'],
+        _address=secrets['address']
+    )
+
+

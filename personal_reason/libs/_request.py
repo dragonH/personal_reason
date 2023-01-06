@@ -6,17 +6,18 @@ import html
 
 def _format_payload(
     _payload: str,
-    _action: str
+    _action: str,
+    _session_id: str
 ):
     """
-        This is for format payload
+        This function is to format payload
     """
     payload_formated = f"""
 <soap12:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://www.w3.org/2003/05/soap-envelope">
     <soap12:Body>
         <SystemObjectRun xmlns="http://scsservices.net/">
         <args>
-            <SessionGuid>00000000-0000-0000-0000-000000000000</SessionGuid>
+            <SessionGuid>{_session_id}</SessionGuid>
             <Action>{_action}</Action>
             <Format>Xml</Format>
             <Bytes />
@@ -29,21 +30,23 @@ def _format_payload(
 """
     return payload_formated
 
-def session(
+def send_request(
     _server_endpoint: str,
     _request_type: str,
     _action: str,
     _payload: str,
+    _session_id: str
 ):
     """
-        This is for session
+        This function is to send requet
     """
     headers = {
         "Content-Type": 'application/soap+xml; charset=utf-8'
     }
     payload_format = _format_payload(
         _payload=_payload,
-        _action=_action
+        _action=_action,
+        _session_id=_session_id
     )
     if _request_type == 'GET':
         response = requests.get(

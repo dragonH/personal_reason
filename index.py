@@ -17,10 +17,11 @@ app \
         _user_id=secrets['user_id'],
         _password=secrets['password']
     ) \
-    .clock_in(
+    .clock_action(
         _base_latitude=secrets['base_latitude'],
         _base_longitude=secrets['base_longitude'],
-        _address=secrets['address']
+        _address=secrets['address'],
+        _clock_action_type='clock_in'
     )
 
 

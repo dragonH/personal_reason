@@ -2,7 +2,8 @@
     This script is for dev
 """
 import sys
-sys.path.append('/mnt/d/python/personal_reason')
+# sys.path.append('/mnt/d/python/personal_reason')
+sys.path.append('.')
 from personal_reason import PersonalReason
 import re
 import json
